@@ -1,0 +1,12 @@
+net: "src/yolo_train.prototxt"
+
+base_lr: 0.0001
+momentum: 0.9
+weight_decay: 0.0005
+
+lr_policy: "fixed"
+display: 100
+max_iter: 1000
+snapshot: 100
+snapshot_prefix: "snapshot/yolo"
+solver_mode: GPU
