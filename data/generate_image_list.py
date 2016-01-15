@@ -65,7 +65,7 @@ def get_annotation(year, image_id):
             continue
         cls_id = classes.index(cls)
         xmlbox = obj.find('bndbox')
-        b = (classes.index(cls)+1, 1.0, int(xmlbox.find('xmin').text), int(xmlbox.find('xmax').text), int(xmlbox.find('ymin').text), int(xmlbox.find('ymax').text))
+        b = (classes.index(cls)+1, int(xmlbox.find('xmin').text), int(xmlbox.find('xmax').text), int(xmlbox.find('ymin').text), int(xmlbox.find('ymax').text))
         #bb = convert((w,h), b)
         #out_file.write(str(cls_id) + " " + " ".join([str(a) for a in bb]) + '\n')
         ret_data.append(b)
@@ -79,8 +79,9 @@ def bbox_data_2_strings(bbox_data):
     strs = []
     for i in range(0, 4):
         strs.append(str(bbox_data[i]))
+    #strs.append(str(bbox_data[3]))
     for i in range(0, bbox_data[3]):
-        strs.append("%d %f %d %d %d %d" % bbox_data[i+4])
+        strs.append("%d %d %d %d %d" % bbox_data[i+4])
     return strs
 
 for year, image_set in sets:
@@ -89,6 +90,7 @@ for year, image_set in sets:
     image_ids = open('VOCdevkit/VOC%s/ImageSets/Main/%s.txt'%(year, image_set)).read().strip().split()
     #list_file = open('%s_%s.txt'%(year, image_set), 'w')
     list_file = open('%s_%s_caffe.txt'%(year, image_set), 'w')
+    list_file.write("%d\n" % (len(image_ids)))
     image_index = 0
     for image_id in image_ids:
         list_file.write('# %d\n' % (image_index))

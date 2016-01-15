@@ -1,10 +1,10 @@
 # caffe-yolo
-yolo implementation using caffe
+YOLO implementation using caffe
 
 You Only Look Once: Unified, Real-Time Object Detection
 
-page:
+Paper:
 http://arxiv.org/abs/1506.02640
 
-project homepage:
+Project homepage:
 http://pjreddie.com/darknet/yolo/
