@@ -1,4 +1,4 @@
-net: "src/yolo_train.prototxt"
+net: "src/yolo_auto_train.prototxt"
 
 base_lr: 0.0001
 momentum: 0.9
